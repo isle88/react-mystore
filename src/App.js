@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Home from './components/Home';
+import Products from './components/Products';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
     <div className="App">
      <Header/>
      <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={<Products />} />
      </Routes>
      <Footer />
     </div>
