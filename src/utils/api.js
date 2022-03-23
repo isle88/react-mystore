@@ -10,3 +10,10 @@ export const fetchProducts = () => {
         return data;
     })
 }
+
+export const fetchProduct = (id) => {
+  return api.get(`/products/${id}`)
+  .then(({ data }) => {
+    return data;
+  })
+}
