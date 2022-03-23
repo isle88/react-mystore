@@ -1,21 +1,9 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
 .App {
   text-align: center;
-}
-
-.header {
-  background-color: black;
-  color: white;
-  padding: 10px 0;
-}
-
-.footer {
-  background-color: black;
-  color: white;
+  height: 100vh;
   width: 100%;
-  bottom: 0;
-  height: 40px;
-  position: sticky;
-  align-items: center;
 }
 
 .products-card {
@@ -24,9 +12,13 @@
   text-overflow: ellipsis;
 }
 
-.card-list {
-  margin: 15px;
+.card-list,
+.product-card {
+  padding: 3rem 0;
 }
-h1 {
-  margin: 0;
+
+a {
+  text-decoration-line: none !important;
+  text-decoration: none;
 }
+
