@@ -19,17 +19,17 @@ const Products = () => {
   }, [setProducts, setLoaded]);
 
   return (
-    <div>
+    <div className="div">
       {loaded ? (
         <>
-          <div className="card-list">
+          <div className="cards">
             <Row xs={1} md={2} className="g-4">
               {products.map((product) => {
                 return (
                   <Col key={product.id} lg={true}>
                     <div className="products-card">
                       <Link to={`/products/${product.id}`} key={product.id}>
-                        <Card style={{ width: 320, height: 220 }}>
+                        <Card style={{ width: 320, height: 260 }}>
                           <Card.Img
                             className="img-fluid"
                             variant="top"
@@ -37,18 +37,24 @@ const Products = () => {
                             style={{
                               objectFit: "contain",
                               display: "inline-block",
-                              width: "90%",
-                              height: "40%",
-                              margin: 15,
+                              marginTop: "5%",
                               overflow: "hidden",
-                              justifyItem: "center",
+                              alignContent: "center",
                             }}
                           />
                           <Card.Body>
-                            <Card.Title style={{ fontSize: 16, color: '#4f4f4d' }}>
+                            <Card.Title
+                              style={{ fontSize: 16, color: "#4f4f4d" }}
+                            >
                               {product.title}
                             </Card.Title>
-                            <Card.Text style={{ fontSize: 15, color: 'black'}}>
+                            <Card.Text
+                              style={{
+                                fontSize: 15,
+                                color: "black",
+                                margin: 5,
+                              }}
+                            >
                               £{product.price}
                             </Card.Text>
                           </Card.Body>
