@@ -12,9 +12,16 @@
   text-overflow: ellipsis;
 }
 
-.card-list,
 .product-card {
-  padding: 3rem 0;
+  padding: 20px 0;
+}
+
+.cards {
+  padding-top: 25px;
+}
+
+.div {
+  margin: 30px 3%;
 }
 
 a {
