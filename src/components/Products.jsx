@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { fetchProducts } from "../utils/api";
 import Card from "react-bootstrap/Card";
 import { Col, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { LikeContext } from "../contexts/LikeContext";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -34,12 +35,14 @@ const Products = () => {
                             className="img-fluid"
                             variant="top"
                             src={product.image}
+                            alt={product.title}
                             style={{
                               objectFit: "contain",
                               display: "inline-block",
                               marginTop: "5%",
                               overflow: "hidden",
                               alignContent: "center",
+                              padding: 10,
                             }}
                           />
                           <Card.Body>
