@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
@@ -11,9 +11,6 @@ import { CartContext } from "./contexts/CartContext";
 import { LikeContext } from "./contexts/LikeContext";
 
 function App() {
-  // const storedLike = JSON.parse(sessionStorage.getItem("liked"));
-  // const storedCart = JSON.parse(sessionStorage.getItem("cart"));
-
   const [liked, setLiked] = useState([]);
   const [cart, setCart] = useState([]);
 
