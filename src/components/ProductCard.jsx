@@ -8,14 +8,14 @@ import { CartContext } from "../contexts/CartContext";
 const Product = () => {
   const [product, setProduct] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const { liked, setLiked, storedLike } = useContext(LikeContext);
-  const { cart, setCart, storedCart } = useContext(CartContext);
+  const { liked, setLiked } = useContext(LikeContext);
+  const { cart, setCart } = useContext(CartContext);
   const { id } = useParams();
 
   useEffect(() => {
     fetchProduct(id)
       .then((data) => {
-        setProduct(data);
+        setProduct(data)
       })
       .then(() => {
         setLoaded(true);
@@ -23,30 +23,21 @@ const Product = () => {
   }, [id, setProduct, setLoaded]);
 
   function handleLike() {
-    const likeId = liked.map((item) => item.id).toString();
-    const productId = product.id.toString();
-
+    const likeId = liked.map((item) => item.id).toString()
+    const productId = product.id.toString()
+   
     if (liked === [] || likeId === productId) {
       setLiked([product]);
-      sessionStorage.setItem("liked", JSON.stringify(liked));
-    } else if (likeId !== productId) {
+    } else if (!likeId.includes(productId)) {
       setLiked((current) => [...current, product]);
-      sessionStorage.setItem("liked", JSON.stringify(liked));
     }
+    sessionStorage.setItem("liked", JSON.stringify(liked));
   }
 
-  // console.log(JSON.parse(sessionStorage.getItem("like")), 'liked')
-  console.log(JSON.parse(sessionStorage.getItem("cart")), 'cart')
-
   function handleCart() {
-    if (cart === []) {
-      setCart([product]);
-      sessionStorage.setItem("cart", JSON.stringify(cart));
-    } else {
-      setCart((current) => [...current, product])
-    }
+    setCart((current) => [...current, product]);
     sessionStorage.setItem("cart", JSON.stringify(cart));
-  };
+  }
 
   return (
     <div className="div product-card">
