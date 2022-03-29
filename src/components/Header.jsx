@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Badge, Container, Nav, Navbar } from "react-bootstrap";
 import { CartContext } from "../contexts/CartContext";
 import { LikeContext } from "../contexts/LikeContext";
@@ -9,29 +9,12 @@ const Header = () => {
 
   const storedLike = JSON.parse(sessionStorage.getItem("liked"));
   const storedCart = JSON.parse(sessionStorage.getItem("cart"));
-  
-  // console.log(storedLike, 'storedCart')
-  // console.log(liked, 'liked')
- 
-  // const productId = product.id.toString();
-
-  // console.log(storedCart, 'storecart')
-  // console.log(liked)
 
   useEffect(() => {
-
-    if(storedLike !== null) {
-      const likeId = liked.map((item) => item.id).toString();
-      console.log(likeId, 'likeId')
-      
-      setLiked(storedLike)
-    }
-
-    if(storedCart !== null) {
-      setCart(storedCart)
-    }
-  }, [setLiked, setCart])
-
+    if (storedLike !== null) setLiked(storedLike);
+    if (storedCart !== null) setCart(storedCart);
+  }, [setCart, setLiked]);
+    
   return (
     <div>
       {/* <Navbar fixed="top" /> */}
@@ -49,13 +32,13 @@ const Header = () => {
               {liked.length > 0 && (
                 <Badge pill bg="light" text="dark">
                   {" "}
-                  {storedLike.length}
+                  {liked.length}
                 </Badge>
               )}{" "}
             </Nav.Link>
             <Nav.Link href="#cart">
               Cart{" "}
-              {cart.length > 0  && (
+              {cart.length > 0 && (
                 <Badge pill bg="light" text="dark">
                   {" "}
                   {storedCart.length}
