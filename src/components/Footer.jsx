@@ -1,13 +1,10 @@
 import React from "react";
-import { Container, Navbar } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 
 function Footer(props) {
   return (
     <div>
-      <Navbar className='fixed-bottom'  bg="dark" style={{ maxHeight: '30px' }}>
-        <Container>
-          <Navbar.Brand href="#home">footer</Navbar.Brand>
-        </Container>
+      <Navbar className='fixed-bottom' style={{ maxHeight: '30px', backgroundColor:'white'}}>
       </Navbar>
     </div>
   );
