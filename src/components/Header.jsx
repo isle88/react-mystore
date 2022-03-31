@@ -13,39 +13,43 @@ const Header = () => {
   useEffect(() => {
     if (storedLike !== null) setLiked(storedLike);
     if (storedCart !== null) setCart(storedCart);
+    // eslint-disable-next-line
   }, [setCart, setLiked]);
-    
+
   return (
     <div>
-      {/* <Navbar fixed="top" /> */}
       <Navbar
         className="fixed-top"
         bg="dark"
         variant="dark"
-        style={{ maxHeight: "45px" }}
+        style={{ maxHeight: "50px" }}
       >
         <Container>
           <Navbar.Brand href="/">MY STORE</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/like">
-              Like{" "}
-              {liked.length > 0 && (
-                <Badge pill bg="light" text="dark">
-                  {" "}
-                  {liked.length}
-                </Badge>
-              )}{" "}
-            </Nav.Link>
-            <Nav.Link href="#cart">
-              Cart{" "}
-              {cart.length > 0 && (
-                <Badge pill bg="light" text="dark">
-                  {" "}
-                  {storedCart.length}
-                </Badge>
-              )}
-            </Nav.Link>
-          </Nav>
+          <span className="menus">
+            <Nav className="me-auto">
+              <Nav.Link href="/like" style={{ padding: 3 }}>
+                <i className="bi bi-heart"></i> LIKE
+                <span className="badge">
+                  {liked.length > 0 && (
+                    <Badge pill bg="light" text="dark">
+                      {liked.length}
+                    </Badge>
+                  )}
+                </span>
+              </Nav.Link>
+              <Nav.Link href="#cart" style={{ padding: 3 }}>
+                <i className="bi bi-cart-plus"></i> CART
+                <span className="badge">
+                  {cart.length > 0 && (
+                    <Badge pill bg="light" text="dark">
+                      {storedCart.length}
+                    </Badge>
+                  )}
+                </span>
+              </Nav.Link>
+            </Nav>
+          </span>
         </Container>
       </Navbar>
     </div>
