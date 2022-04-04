@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
+import Cart from './components/Cart';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Like from "./components/Like";
@@ -24,6 +25,7 @@ function App() {
               <Route path="/" element={<Products />} />
               <Route path="/products/:id" element={<Product />} />
               <Route path="/like" element={<Like />} />
+              <Route path="/cart" element={<Cart />} />
             </Routes>
             <Footer />
           </BrowserRouter>
