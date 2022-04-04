@@ -19,16 +19,15 @@ const Header = () => {
   return (
     <div>
       <Navbar
-        className="fixed-top"
+        className="fixed-top nav-var"
         bg="dark"
         variant="dark"
-        style={{ maxHeight: "50px" }}
       >
         <Container>
           <Navbar.Brand href="/">MY STORE</Navbar.Brand>
           <span className="menus">
             <Nav className="me-auto">
-              <Nav.Link href="/like" style={{ padding: 3 }}>
+              <Nav.Link href="/like" className='nav-link'>
                 <i className="bi bi-heart"></i> LIKE
                 <span className="badge">
                   {liked.length > 0 && (
@@ -38,7 +37,7 @@ const Header = () => {
                   )}
                 </span>
               </Nav.Link>
-              <Nav.Link href="#cart" style={{ padding: 3 }}>
+              <Nav.Link href="/cart" className='nav-link'>
                 <i className="bi bi-cart-plus"></i> CART
                 <span className="badge">
                   {cart.length > 0 && (
