@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
-import { LikeContext } from "../contexts/LikeContext";
+import { CartContext } from "../contexts/CartContext";
 
-const Like = () => {
-  const { liked, setLiked } = useContext(LikeContext);
+function Cart() {
+  const { cart, setCart } = useContext(CartContext);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (liked.length) {
+    if (cart.length) {
       setIsLoaded(true);
     }
-  }, [liked.length]);
+  }, [cart.length]);
 
   function handleRemove() {
-    setLiked([]);
+    setCart([]);
     setIsLoaded(false);
-    sessionStorage.removeItem("liked");
+    sessionStorage.removeItem("cart");
   }
 
   return (
@@ -24,13 +24,13 @@ const Like = () => {
         {isLoaded ? (
           <>
             <Card>
-              <Card.Header>You liked {liked.length} items</Card.Header>
+              <Card.Header>{cart.length} Items in your cart</Card.Header>
               <ListGroup variant="flush">
-                {[...liked].map((product) => {
+                {[...cart].map((product, index) => {
                   return (
-                    <ListGroup.Item key={product.id} style={{ fontSize: 18 }}>
-                     <p style={{fontSize: 16}}> {product.title}</p>
-                      £ {product.price.toFixed(2)}
+                    <ListGroup.Item key={index} style={{ fontSize: 16 }}>
+                      {product.title}
+                      <br />£ {product.price.toFixed(2)}
                     </ListGroup.Item>
                   );
                 })}
@@ -48,13 +48,23 @@ const Like = () => {
                 </Button>
               </ListGroup>
             </Card>
+            <p style={{ justifyContent: "right" }}>
+              TOTAL : £{" "}
+              {cart
+                .map((product) => {
+                  return product.price;
+                })
+                .reduce((prev, curr) => prev + curr).toFixed(2)}
+            </p>
           </>
         ) : (
           <>
             <Card>
-              <Card.Header>You liked 0 item</Card.Header>
+              <Card.Header>Your cart is empty</Card.Header>
               <ListGroup variant="flush">
-                <ListGroup.Item>please add item you liked first</ListGroup.Item>
+                <ListGroup.Item>
+                  please add item first in your cart
+                </ListGroup.Item>
               </ListGroup>
             </Card>
           </>
@@ -62,6 +72,6 @@ const Like = () => {
       </>
     </div>
   );
-};
+}
 
-export default Like;
+export default Cart;
