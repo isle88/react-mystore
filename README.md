@@ -6,7 +6,8 @@ You can see items' detail, also you can use like and cart on the detail page.
 This application is designed to learn more about React-Bootstrap and Session storage.
 
 ## Link to hosted Version
- - 
+ - https://react-mystore-h.netlify.app/
+ 
 ## Stack
  - React
  - React bootstrap
