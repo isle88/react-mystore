@@ -16,7 +16,18 @@
   margin: 0;
   color: black;
 }
+.title {
+  font-size: 18px;
+}
 
+.price {
+  font-size: 15px;
+}
+
+.remove-button {
+  width: 60%;
+  margin: 5px 0 5px 20%;
+}
 
 a {
   text-decoration-line: none !important;

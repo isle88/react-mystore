@@ -28,21 +28,16 @@ const Like = () => {
               <ListGroup variant="flush">
                 {[...liked].map((product) => {
                   return (
-                    <ListGroup.Item key={product.id} style={{ fontSize: 18 }}>
-                     <p style={{fontSize: 16}}> {product.title}</p>
-                      £ {product.price.toFixed(2)}
+                    <ListGroup.Item key={product.id}>
+                      <div className="title">{product.title}</div>
+                      <div className="price">£ {product.price.toFixed(2)}</div>
                     </ListGroup.Item>
                   );
                 })}
                 <Button
                   onClick={handleRemove}
                   variant="outline-secondary"
-                  style={{
-                    width: "60%",
-                    marginLeft: "20%",
-                    marginTop: 5,
-                    marginBottom: 5,
-                  }}
+                  className="remove-button"
                 >
                   remove all items
                 </Button>
