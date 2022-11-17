@@ -5,7 +5,7 @@ import { Button, Card, Spinner } from "react-bootstrap";
 import { LikeContext } from "../contexts/LikeContext";
 import { CartContext } from "../contexts/CartContext";
 
-const Product = () => {
+export const Product = () => {
   const [product, setProduct] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const { liked, setLiked } = useContext(LikeContext);
@@ -40,9 +40,9 @@ const Product = () => {
   }
 
   return (
-    <div className="div product-card">
+    <>
       {loaded ? (
-        <>
+        <div className="main">
           <Card className="text-center" key={product.id}>
             <Card.Header>{product.category}</Card.Header>
             <Card.Body className='card-padding'>
@@ -77,14 +77,12 @@ const Product = () => {
               </Button>
             </Card.Body>
           </Card>
-        </>
+          </div>
       ) : (
         <>
           <Spinner animation="grow" />
         </>
       )}
-    </div>
+    </>
   );
 };
-
-export default Product;
