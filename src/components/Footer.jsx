@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from 'react-bootstrap';
 
-function Footer(props) {
+export const Footer = () => {
   return (
     <div>
       <Navbar className='fixed-bottom footer'>
@@ -10,4 +10,3 @@ function Footer(props) {
   );
 }
 
-export default Footer;
