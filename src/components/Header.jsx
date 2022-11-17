@@ -3,7 +3,7 @@ import { Badge, Container, Nav, Navbar } from "react-bootstrap";
 import { CartContext } from "../contexts/CartContext";
 import { LikeContext } from "../contexts/LikeContext";
 
-const Header = () => {
+export const Header = () => {
   const { liked, setLiked } = useContext(LikeContext);
   const { cart, setCart } = useContext(CartContext);
 
@@ -18,16 +18,16 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar
-        className="fixed-top nav-var"
-        bg="dark"
-        variant="dark"
-      >
+      <Navbar className="fixed-top nav-var" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">MY STORE</Navbar.Brand>
           <span className="menus">
             <Nav className="me-auto">
-              <Nav.Link href="/like" className='nav-link'>
+              <Nav.Link href="/products" className="nav-link">
+                <i className="bi bi-plus"></i> ADD
+              </Nav.Link>
+
+              <Nav.Link href="/like" className="nav-link">
                 <i className="bi bi-heart"></i> LIKE
                 <span className="badge">
                   {liked.length > 0 && (
@@ -37,7 +37,8 @@ const Header = () => {
                   )}
                 </span>
               </Nav.Link>
-              <Nav.Link href="/cart" className='nav-link'>
+
+              <Nav.Link href="/cart" className="nav-link">
                 <i className="bi bi-cart-plus"></i> CART
                 <span className="badge">
                   {cart.length > 0 && (
@@ -54,5 +55,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;
