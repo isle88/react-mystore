@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import { Col, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Products = () => {
+export const Products = () => {
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -19,10 +19,9 @@ const Products = () => {
   }, [setProducts, setLoaded]);
 
   return (
-    <div className="div">
+    <>
       {loaded ? (
-        <>
-          <div>
+        <div>
             <Row xs={1} md={2} className="g-4">
               {products.map((product) => {
                 return (
@@ -51,15 +50,12 @@ const Products = () => {
                 );
               })}
             </Row>
-          </div>
-        </>
+        </div>
       ) : (
         <>
           <Spinner animation="grow" />
         </>
       )}
-    </div>
+    </>
   );
 };
-
-export default Products;
