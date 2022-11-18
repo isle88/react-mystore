@@ -5,19 +5,18 @@ import { ModalPop } from "./ModalPop";
 export const Add = () => {
   const [inputs, setInputs] = useState({});
   const [title, setTitle] = useState("");
-  //   const [submit, setSubmit] = useState(false);
   const [modal, setModal] = useState(false);
 
   function handleChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setInputs({ ...inputs, [name]: value });
     setModal(false);
   }
   function handleSubmit(e) {
     e.preventDefault();
     setTitle(inputs.title);
-    addNewProduct();
+    inputs.category ? addNewProduct() : alert(`please select category`);
   }
 
   function addNewProduct() {
@@ -91,6 +90,7 @@ export const Add = () => {
                 name="image"
                 value={inputs.image || ""}
                 onChange={handleChange}
+                required
               />
             </Col>
           </Form.Group>
