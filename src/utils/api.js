@@ -25,7 +25,7 @@ export async function fetchProduct(id) {
 export async function postProduct(input) {
   try {
     let res = await api.post(`/products`, input);
-    return res;
+    return res.data.id;
   } catch (error) {
     console.log(error);
   }
