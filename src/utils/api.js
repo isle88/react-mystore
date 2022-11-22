@@ -4,22 +4,29 @@ const api = axios.create({
   baseURL: "https://fakestoreapi.com",
 });
 
-export const fetchProducts = () => {
-    return api.get('/products')
-    .then(({ data }) => {
-        return data;
-    })
-    .catch(error => {
-      console.log(error.response.data.error)
-    })
+export async function fetchProducts() {
+  try {
+    let res = await api.get(`/products`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export const fetchProduct = (id) => {
-  return api.get(`/products/${id}`)
-  .then(({ data }) => {
-    return data;
-  })
-  .catch(error => {
-    console.log(error.response.data.error)
-  })
+export async function fetchProduct(id) {
+  try {
+    let res = await api.get(`/products/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function postProduct(input) {
+  try {
+    let res = await api.post(`/products`, input);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
 }
