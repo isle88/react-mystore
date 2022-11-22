@@ -9,47 +9,46 @@ export const Products = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    fetchProducts()
-      .then((data) => {
-        setProducts(data);
-      })
-      .then(() => {
-        setLoaded(true);
-      });
+    async function getProducts() {
+      const data = await fetchProducts();
+      setProducts(data);
+      setLoaded(true);
+    }
+    getProducts();
   }, [setProducts, setLoaded]);
 
   return (
     <>
       {loaded ? (
         <div>
-            <Row xs={1} md={2} className="g-4">
-              {products.map((product) => {
-                return (
-                  <Col key={product.id} lg={true}>
-                    <div className="products-card">
-                      <Link to={`/products/${product.id}`} key={product.id}>
-                        <Card className="card-size">
-                          <Card.Img
-                            className="img-fluid products-card-image"
-                            variant="top"
-                            src={product.image}
-                            alt={product.title}
-                          />
-                          <Card.Body>
-                            <Card.Title className="products-card-title">
-                              {product.title}
-                            </Card.Title>
-                            <Card.Text className="card-price">
-                              £{product.price.toFixed(2)}
-                            </Card.Text>
-                          </Card.Body>
-                        </Card>
-                      </Link>
-                    </div>
-                  </Col>
-                );
-              })}
-            </Row>
+          <Row xs={1} md={2} className="g-4">
+            {products.map((product) => {
+              return (
+                <Col key={product.id} lg={true}>
+                  <div className="products-card">
+                    <Link to={`/products/${product.id}`} key={product.id}>
+                      <Card className="card-size">
+                        <Card.Img
+                          className="img-fluid products-card-image"
+                          variant="top"
+                          src={product.image}
+                          alt={product.title}
+                        />
+                        <Card.Body>
+                          <Card.Title className="products-card-title">
+                            {product.title}
+                          </Card.Title>
+                          <Card.Text className="card-price">
+                            £{product.price.toFixed(2)}
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </div>
+                </Col>
+              );
+            })}
+          </Row>
         </div>
       ) : (
         <>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { postProduct } from "../utils/api";
 import { ModalPop } from "./ModalPop";
 
 export const Add = () => {
@@ -19,14 +20,14 @@ export const Add = () => {
     inputs.category ? addNewProduct() : alert(`please select category`);
   }
 
-  function addNewProduct() {
-    fetch("https://fakestoreapi.com/products", {
-      method: "POST",
-      body: JSON.stringify(inputs),
-    }).then((res) => res.json());
-    setModal(true);
-    setInputs({});
+  async function addNewProduct() {
+    const posted = await postProduct(inputs);
+    if (posted) {
+      setModal(true);
+      setInputs({});
+    }
   }
+
   return (
     <>
       {modal && <ModalPop showModal={modal} title={title} />}

@@ -13,20 +13,19 @@ export const Product = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchProduct(id)
-      .then((data) => {
-        setProduct(data)
-      })
-      .then(() => {
-        setLoaded(true);
-      });
+    async function getProduct() {
+      const data = await fetchProduct(id);
+      setProduct(data);
+      setLoaded(true);
+    }
+    getProduct();
   }, [id, setProduct, setLoaded]);
 
   function handleLike() {
-    const likeId = liked.map((item) => item.id).toString()
-    const productId = product.id.toString()
-   
-    if (!liked.length  || likeId === productId) {
+    const likeId = liked.map((item) => item.id).toString();
+    const productId = product.id.toString();
+
+    if (!liked.length || likeId === productId) {
       setLiked([product]);
     } else if (!likeId.includes(productId)) {
       setLiked((current) => [...current, product]);
@@ -45,7 +44,7 @@ export const Product = () => {
         <div className="main">
           <Card className="text-center" key={product.id}>
             <Card.Header>{product.category}</Card.Header>
-            <Card.Body className='card-padding'>
+            <Card.Body className="card-padding">
               <Card.Title>{product.title}</Card.Title>
               <Card.Img
                 className="img-fluid card-image"
@@ -53,31 +52,33 @@ export const Product = () => {
                 src={product.image}
                 alt={product.title}
               />
-              <Card.Text className='card-description'>
+              <Card.Text className="card-description">
                 {product.description}
               </Card.Text>
-              <Card.Text className='card-price'>£{product.price.toFixed(2)}</Card.Text>
-              <Card.Text className='card-rate-count'>
+              <Card.Text className="card-price">
+                £{product.price.toFixed(2)}
+              </Card.Text>
+              <Card.Text className="card-rate-count">
                 {product.rating.rate} <i className="bi bi-star-fill"></i> / by{" "}
                 {product.rating.count} customers
               </Card.Text>
               <Button
                 onClick={handleLike}
                 variant="outline-secondary"
-                className='card-button'
+                className="card-button"
               >
                 Like <i className="bi bi-heart"></i>
               </Button>
               <Button
                 onClick={handleCart}
                 variant="outline-secondary"
-                className='card-button'
+                className="card-button"
               >
                 Cart <i className="bi bi-cart-plus"></i>
               </Button>
             </Card.Body>
           </Card>
-          </div>
+        </div>
       ) : (
         <>
           <Spinner animation="grow" />
